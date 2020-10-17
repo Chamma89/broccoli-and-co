@@ -1,0 +1,13 @@
+@import "./Variables";
+
+.main-body {
+  div {
+    height: 1000px;
+  }
+}
+
+.main-body__image {
+  filter: brightness(85%);
+  height: 100%;
+  width: 100%;
+}

@@ -1,25 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
+import "./styles/App.scss";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Nav />
-        <header className="App-header">
-          <p>Broccoli & Co.</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Main />
+        <Footer />
       </div>
     </Router>
   );

@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "../styles/_Nav.scss";
 import * as ReactBootstrap from "react-bootstrap";
+import Logo from "../images/broccoli-icon.png";
 
 function Nav() {
   return (
-    <ReactBootstrap.Navbar className="nav mt-5 sticky-top" expand="lg">
+    <ReactBootstrap.Navbar className="nav sticky-top" expand="lg">
       <ReactBootstrap.Navbar.Brand href="/">
-        <div className="nav__logo"></div>
+        <div className="nav__logo">
+          <img src={Logo} alt="logo" height="30" />
+        </div>
       </ReactBootstrap.Navbar.Brand>
       <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
       <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
-        <ReactBootstrap.Nav>
+        <ReactBootstrap.Nav className="container">
           <Link to="/" className="nav__nav-link">
             Work
           </Link>
