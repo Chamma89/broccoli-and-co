@@ -22,7 +22,7 @@ function Nav() {
             About
           </Link>
           <Link to="/contact" className="nav__nav-link">
-            Contacts
+            Contact us
           </Link>
         </ReactBootstrap.Nav>
       </ReactBootstrap.Navbar.Collapse>

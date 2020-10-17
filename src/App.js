@@ -9,9 +9,15 @@ import "./styles/App.scss";
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Nav />
-        <Main />
+      <div className="page-container">
+        <div className="page-container__content-wrap">
+          <div className="App">
+            <Nav />
+            <Switch>
+              <Route path="/" exact component={Main} />
+            </Switch>
+          </div>
+        </div>
         <Footer />
       </div>
     </Router>

@@ -1,13 +1,75 @@
 @import "./Variables";
 
 .main-body {
-  div {
-    height: 1000px;
+  &__image {
+    filter: brightness(70%);
+    height: 100%;
+    width: 100%;
   }
 }
 
-.main-body__image {
-  filter: brightness(85%);
-  height: 100%;
-  width: 100%;
+.our-purpose {
+  align-items: start;
+  display: grid;
+  grid-gap: 6rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  margin: 50px 0px;
+  text-align: center;
+  width: 114rem;
+
+  &__section {
+    background-color: #fff;
+    border-radius: 0.4rem;
+    box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    height: 100%;
+    overflow: hidden;
+    transition: $transition;
+
+    &:hover {
+      transform: translateY(-0.5%);
+      box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.2);
+    }
+
+    &--line-1,
+    &--line-2,
+    &--line-3 {
+      height: 3px;
+    }
+
+    &--line-1 {
+      background-color: $naturalYellow;
+    }
+
+    &--line-2 {
+      background-color: $cactusGreen;
+    }
+
+    &--line-3 {
+      background-color: $lightGreen;
+    }
+
+    img {
+      height: 100px;
+      padding: 20px;
+    }
+
+    p {
+      padding: 3rem 3rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-body__image {
+    object-fit: cover;
+    object-position: 100% 0;
+    width: 100%;
+    height: 460px;
+  }
+
+  .our-purpose {
+    grid-template-columns: 1fr;
+  }
 }
