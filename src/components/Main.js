@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import * as ReactBootstrap from "react-bootstrap";
+import React, { Component, useState } from "react";
+import Modal from "react-modal";
 import "../styles/_Main.scss";
 import MainImage from "../images/main-veggies.jpg";
 import DeliveryTruck from "../images/delivery-icon.png";
@@ -7,6 +7,8 @@ import Charity from "../images/charity-icon.png";
 import Sustainability from "../images/sustainability-icon.png";
 
 function Main() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
     <div className="main-body">
       <div className="main-body__section">
@@ -17,9 +19,24 @@ function Main() {
             <br /> to enjoy everyday.
           </h1>
           <h4>Be the first to know when we launch.</h4>
-          <button>
+          <button onClick={() => setModalIsOpen(true)}>
             <span>Request an invite</span>
           </button>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={() => setModalIsOpen(false)}
+            aria={{
+              labelledby: "heading",
+              describedby: "full_description",
+            }}
+            closeTimeoutMS={500}
+            className="main-body__modal"
+          >
+            <div>
+              <h2>This is a Modal</h2>
+              <button onClick={() => setModalIsOpen(false)}>Close</button>
+            </div>
+          </Modal>
         </div>
       </div>
       <div className="our-purpose container">
