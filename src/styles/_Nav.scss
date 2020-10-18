@@ -8,9 +8,11 @@
   position: relative;
 
   .title {
+    bottom: 35%;
     color: #fff;
     display: inline-block;
     margin-left: 10px;
+    position: absolute;
   }
 
   &__nav-link {
