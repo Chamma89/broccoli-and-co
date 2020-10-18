@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import "../styles/_Main.scss";
 import MainImage from "../images/main-veggies.jpg";
@@ -6,8 +6,48 @@ import DeliveryTruck from "../images/delivery-icon.png";
 import Charity from "../images/charity-icon.png";
 import Sustainability from "../images/sustainability-icon.png";
 
+Modal.setAppElement("#root");
+
 function Main() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [failedPost, setFailedPost] = useState(false);
+  const [succeededPost, setSucceededPost] = useState(false);
+  const [responsePost, setResponsePost] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  // function decrementCount(){
+  //   setCount(prevCount => prevCount - 1)
+  // }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email }),
+    };
+
+    fetch(
+      "https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth",
+      requestOptions
+    ).then((response) => {
+      // if (response.status == 200) {
+      //   setSucceededPost(true);
+      //   console.log("shdshdjshdjksh");
+      // } else if (response.status == 400) {
+      //   setFailedPost({ failedPost: true });
+      //   console.log("done");
+      // }
+      // console.log(succeededPost);
+      // console.log(failedPost);
+      setResponsePost(response.status);
+      return response.json();
+    });
+    // .then((data) => setPostId(data.id));
+  };
+
+  useEffect(() => {}, [responsePost]);
 
   return (
     <div className="main-body">
@@ -32,10 +72,39 @@ function Main() {
             closeTimeoutMS={500}
             className="main-body__modal"
           >
-            <div>
-              <h2>This is a Modal</h2>
-              <button onClick={() => setModalIsOpen(false)}>Close</button>
-            </div>
+            <form onSubmit={onSubmit}>
+              {responsePost == 200 ? <h1>what</h1> : null}
+              <div className="main-body__modal__content">
+                <h2>Request an invite</h2>
+                <input
+                  type="text"
+                  placeholder="Full name"
+                  value={name}
+                  onChange={(e) => setName(e.currentTarget.value)}
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.currentTarget.value)}
+                />
+                <input type="email" placeholder="Confirm email" />
+              </div>
+              <div className="main-body__modal__buttons">
+                <button
+                  className="main-body__modal__buttons--close"
+                  onClick={() => setModalIsOpen(false)}
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  className="main-body__modal__buttons--submit"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
           </Modal>
         </div>
       </div>
