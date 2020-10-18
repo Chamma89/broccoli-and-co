@@ -9,7 +9,19 @@ import Sustainability from "../images/sustainability-icon.png";
 function Main() {
   return (
     <div className="main-body">
-      <img src={MainImage} className="main-body__image" alt="logo" />
+      <div className="main-body__section">
+        <img src={MainImage} className="main-body__image" alt="logo" />
+        <div className="main-body__headings">
+          <h1>
+            A better way
+            <br /> to enjoy everyday.
+          </h1>
+          <h4>Be the first to know when we launch.</h4>
+          <button>
+            <span>Request an invite</span>
+          </button>
+        </div>
+      </div>
       <div className="our-purpose container">
         <div className="our-purpose__section">
           <div className="our-purpose__section--line-1"></div>
@@ -17,8 +29,8 @@ function Main() {
           <h3>What we do</h3>
           <p>
             We deliver the freshest vegetables in all of Australia to your
-            company every morning. These are organically sourced and presevative
-            free veggies.
+            company every morning. These are organically sourced and
+            presersvative free veggies.
           </p>
         </div>
         <div className="our-purpose__section">

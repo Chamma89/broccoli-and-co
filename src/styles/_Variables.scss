@@ -1,8 +1,13 @@
+// Viewport
+$breakpointMobile: 600px;
+$breakpointTablet: 1024px;
+
+// Colors
+$cactusGreen: #4d774e;
+
 $charcoal: #5a5a5a;
 
-$navyBlue: #003366;
-
-$cactusGreen: #4d774e;
+$creamWhite: #faf0e6;
 
 $darkGreen: #164a41;
 
@@ -10,10 +15,11 @@ $lightGreen: #9dc88d;
 
 $naturalYellow: #f1b24a;
 
-$creamWhite: #faf0e6;
+// Buttons
 
+// Card styling
 $standardBorderRadius: 1rem;
-
-$headingFont: "Roboto", sans-serif;
-
 $transition: 0.2s;
+
+// Headings
+$headingFont: "Roboto", sans-serif;

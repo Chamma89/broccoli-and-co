@@ -1,10 +1,16 @@
-@import "./Variables";
+@import "../styles/Variables";
+@import "../styles/Functions";
 
 html,
 body {
   display: block;
+  font-size: 21px !important;
   min-height: 100vh; /* will cover the 100% of viewport */
   position: relative;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {

@@ -11,6 +11,7 @@ function Nav() {
         <div className="nav__logo">
           <img src={Logo} alt="logo" height="30" />
         </div>
+        <div className="title">Broccoli &amp; co.</div>
       </ReactBootstrap.Navbar.Brand>
       <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
       <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
