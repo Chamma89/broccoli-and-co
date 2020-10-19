@@ -14,6 +14,7 @@ function Main() {
   const [responsePost, setResponsePost] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [emailsMatchedMessage, setEmailsMatchedMessage] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
 
   const onSubmit = (e) => {
@@ -39,19 +40,25 @@ function Main() {
   };
 
   useEffect(() => {
+    if (email.length !== 0 && confirmEmail.length !== 0) {
+      if (email.toLowerCase() === confirmEmail.toLowerCase()) {
+        setEmailsMatchedMessage(() => setEmailsMatchedMessage("Emails match"));
+      } else {
+        setEmailsMatchedMessage(() =>
+          setEmailsMatchedMessage("Emails dont match")
+        );
+      }
+    } else {
+      setEmailsMatchedMessage("");
+    }
+  }, [email, confirmEmail]);
+
+  useEffect(() => {
     if (responsePost == 200) {
       setModalIsOpen(() => setModalIsOpen(false));
       setSuccessModalIsOpen(() => setSuccessModalIsOpen(true));
     }
   }, [responsePost]);
-
-  function matchingEmails() {
-    if (email.toLowerCase() === confirmEmail.toLowerCase()) {
-      return <span className="text-success">Emails match</span>;
-    } else {
-      return <span className="text-danger">Emails don't match</span>;
-    }
-  }
 
   function resetForm() {
     setName("");
@@ -103,7 +110,9 @@ function Main() {
                   placeholder="Full name"
                   value={name}
                   minLength="3"
-                  onChange={(e) => setName(e.currentTarget.value)}
+                  onChange={(e) => {
+                    setName(e.currentTarget.value);
+                  }}
                   required
                 />
                 <input
@@ -121,7 +130,13 @@ function Main() {
                   required
                 />
               </div>
-              <span className="mt-3">{matchingEmails()}</span>
+              <span
+                className={`${
+                  email === confirmEmail ? "text-success" : "text-danger"
+                } mt-3`}
+              >
+                {emailsMatchedMessage}
+              </span>
               <div className="main-body__modal__buttons">
                 <button
                   className="main-body__modal__buttons--close"
