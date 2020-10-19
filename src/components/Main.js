@@ -51,6 +51,13 @@ function Main() {
     }
   }
 
+  function resetForm() {
+    setName("");
+    setEmail("");
+    setConfirmEmail("");
+    setResponsePost(200);
+  }
+
   useEffect(() => {
     if (email != confirmEmail) {
       setEmailsMatch(false);
@@ -69,7 +76,12 @@ function Main() {
             <br /> to enjoy everyday.
           </h1>
           <h4>Be the first to know when we launch.</h4>
-          <button onClick={() => setModalIsOpen(true)}>
+          <button
+            onClick={() => {
+              setModalIsOpen(true);
+              resetForm();
+            }}
+          >
             <span>Request an invite</span>
           </button>
           <Modal
