@@ -1,9 +1,10 @@
 @import "./Variables";
 
-@mixin buttonEssentials {
+@mixin buttonEssentials($backgroundColor, $textColor) {
+  background-color: $backgroundColor;
   border-radius: $standardBorderRadius;
   border: none;
-  color: #ffffff;
+  color: $textColor;
   cursor: pointer;
   font-size: 22px;
   padding: 20px;

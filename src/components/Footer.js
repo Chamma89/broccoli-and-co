@@ -9,27 +9,9 @@ function Footer() {
         <div className="footer__container">
           <div className="footer__content">
             <div className="footer__heading">
-              <h2>No chemical in our vegetable ;)</h2>
+              <h2>Fill your bellies with our veggies</h2>
             </div>
             <p className="mb-0">Broccoli & Co. © 2020 built by Fouad Chamma</p>
-
-            <ul className="social__media">
-              <li>
-                <a href="#">
-                  <i className="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-youtube" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
       </section>

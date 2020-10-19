@@ -85,6 +85,23 @@
   }
 }
 
+// Success modal
+
+.success-modal__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+  margin: auto;
+  text-align: center;
+  width: 80%;
+
+  button {
+    @include buttonEssentials($naturalYellow, $charcoal);
+    font-weight: 600;
+  }
+}
+
 // Viewport change styling
 
 @media only screen and (max-width: $breakpointMobile) {

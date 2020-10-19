@@ -15,7 +15,6 @@ function Main() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
-  const [emailsMatch, setEmailsMatch] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -42,16 +41,9 @@ function Main() {
   useEffect(() => {
     if (responsePost == 200) {
       setModalIsOpen(() => setModalIsOpen(false));
+      setSuccessModalIsOpen(() => setSuccessModalIsOpen(true));
     }
   }, [responsePost]);
-
-  useEffect(() => {
-    if (email !== confirmEmail) {
-      setEmailsMatch(false);
-    } else {
-      setEmailsMatch(true);
-    }
-  }, [confirmEmail]);
 
   function matchingEmails() {
     if (email.toLowerCase() === confirmEmail.toLowerCase()) {
@@ -65,7 +57,7 @@ function Main() {
     setName("");
     setEmail("");
     setConfirmEmail("");
-    setResponsePost(200);
+    setResponsePost(300);
   }
 
   return (
@@ -101,8 +93,8 @@ function Main() {
             className="main-body__modal"
           >
             <form onSubmit={onSubmit}>
-              <span className="text-danger">
-                {responsePost == 400 ? "Error 400" : ""}
+              <span className="text-danger mt-3">
+                {responsePost == 400 ? "Oops. Try another email" : ""}
               </span>
               <div className="main-body__modal__content">
                 <h2>Request an invite</h2>
@@ -129,7 +121,7 @@ function Main() {
                   required
                 />
               </div>
-              <span>{matchingEmails()}</span>
+              <span className="mt-3">{matchingEmails()}</span>
               <div className="main-body__modal__buttons">
                 <button
                   className="main-body__modal__buttons--close"
@@ -149,40 +141,66 @@ function Main() {
               </div>
             </form>
           </Modal>
-          <Modal isOpen={successModalIsOpen}>
-            <div></div>
+          <Modal
+            onRequestClose={() => setSuccessModalIsOpen(false)}
+            className="success-modal"
+            isOpen={successModalIsOpen}
+            aria={{
+              labelledby: "heading",
+              describedby: "full_description",
+            }}
+            closeTimeoutMS={500}
+          >
+            <div className="success-modal__content">
+              <h2>All done!</h2>
+              <p>You will receieve the invite in the mail any second now.</p>
+              <button
+                onClick={() => {
+                  setSuccessModalIsOpen(false);
+                  resetForm();
+                }}
+              >
+                Close
+              </button>
+            </div>
           </Modal>
         </div>
       </div>
       <div className="our-purpose container">
-        <div className="our-purpose__section">
-          <div className="our-purpose__section--line-1"></div>
-          <img src={DeliveryTruck} alt="DeliveryTruck" />
-          <h3>What we do</h3>
-          <p>
-            We deliver the freshest vegetables in all of Australia to your
-            company every morning. These are organically sourced and
-            presersvative free veggies.
-          </p>
-        </div>
-        <div className="our-purpose__section">
-          <div className="our-purpose__section--line-2"></div>
-          <img src={Charity} alt="Charity" />
-          <h3>Our charities</h3>
-          <p>
-            We're always happy to deliver unwanted vegetables to the needy. We
-            also hold multiple charity events per year.
-          </p>
-        </div>
-        <div className="our-purpose__section">
-          <div className="our-purpose__section--line-3"></div>
-          <img src={Sustainability} alt="Sustainability" />
-          <h3>Sustainability</h3>
-          <p>
-            For every company we sign up, we plant one tree in the forrest of
-            Narnia. Currently we're up to 5000 trees!
-          </p>
-        </div>
+        <a href="/about">
+          <div className="our-purpose__section">
+            <div className="our-purpose__section--line-1"></div>
+            <img src={DeliveryTruck} alt="DeliveryTruck" />
+            <h3>What we do</h3>
+            <p>
+              We deliver the freshest vegetables in all of Australia to your
+              company every morning. These are organically sourced and
+              presersvative free veggies.
+            </p>
+          </div>
+        </a>
+        <a href="/about">
+          <div className="our-purpose__section">
+            <div className="our-purpose__section--line-2"></div>
+            <img src={Charity} alt="Charity" />
+            <h3>Our charities</h3>
+            <p>
+              We're always happy to deliver unwanted vegetables to the needy. We
+              also hold multiple charity events per year.
+            </p>
+          </div>
+        </a>
+        <a href="/about">
+          <div className="our-purpose__section">
+            <div className="our-purpose__section--line-3"></div>
+            <img src={Sustainability} alt="Sustainability" />
+            <h3>Sustainability</h3>
+            <p>
+              For every company we sign up, we plant one tree in the forrest of
+              Narnia. Currently we're up to 5000 trees!
+            </p>
+          </div>
+        </a>
       </div>
     </div>
   );

@@ -11,19 +11,19 @@ function Nav() {
         <div className="nav__logo">
           <img src={Logo} alt="logo" height="30" />
         </div>
-        <div className="title">Broccoli &amp; co.</div>
+        <div className="title">Broccoli &amp; Co.</div>
       </ReactBootstrap.Navbar.Brand>
       <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
       <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
         <ReactBootstrap.Nav className="container">
           <Link to="/" className="nav__nav-link">
-            Work
+            Home
           </Link>
           <Link to="/about" className="nav__nav-link">
             About
           </Link>
           <Link to="/contact" className="nav__nav-link">
-            Contact us
+            Contact Us
           </Link>
         </ReactBootstrap.Nav>
       </ReactBootstrap.Navbar.Collapse>

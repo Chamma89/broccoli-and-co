@@ -18,7 +18,7 @@
     color: #fff;
     font-family: $headingFont;
     position: absolute;
-    top: 20%;
+    top: 35%;
     left: 50%;
     letter-spacing: 8px;
     transform: translate(-50%, -50%);
@@ -37,12 +37,10 @@
   }
 
   button {
-    @include buttonEssentials();
-    background-color: $naturalYellow;
-    color: $charcoal;
+    @include buttonEssentials($naturalYellow, $charcoal);
     font-weight: 600;
     letter-spacing: 2px;
-    margin-top: 5px;
+    margin-top: 15px;
     text-transform: uppercase;
 
     span {
@@ -122,6 +120,10 @@
       padding: 1rem;
       margin: 0px;
     }
+  }
+  a {
+    color: black;
+    height: 100%;
   }
 }
 // Various viewport styling
