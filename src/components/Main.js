@@ -10,19 +10,17 @@ Modal.setAppElement("#root");
 
 function Main() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [failedPost, setFailedPost] = useState(false);
-  const [succeededPost, setSucceededPost] = useState(false);
+  const [successModalIsOpen, setSuccessModalIsOpen] = useState(false);
   const [responsePost, setResponsePost] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
   const [emailsMatch, setEmailsMatch] = useState(false);
-  const [confirmMessage, setConfirmMessage] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (email != confirmEmail) {
+    if (email !== confirmEmail) {
       return false;
     }
 
@@ -39,12 +37,24 @@ function Main() {
       setResponsePost(() => setResponsePost(response.status));
       return response.json();
     });
-
-    // .then((data) => setPostId(data.id));
   };
 
+  useEffect(() => {
+    if (responsePost == 200) {
+      setModalIsOpen(() => setModalIsOpen(false));
+    }
+  }, [responsePost]);
+
+  useEffect(() => {
+    if (email !== confirmEmail) {
+      setEmailsMatch(false);
+    } else {
+      setEmailsMatch(true);
+    }
+  }, [confirmEmail]);
+
   function matchingEmails() {
-    if (email == confirmEmail) {
+    if (email.toLowerCase() === confirmEmail.toLowerCase()) {
       return <span className="text-success">Emails match</span>;
     } else {
       return <span className="text-danger">Emails don't match</span>;
@@ -57,14 +67,6 @@ function Main() {
     setConfirmEmail("");
     setResponsePost(200);
   }
-
-  useEffect(() => {
-    if (email != confirmEmail) {
-      setEmailsMatch(false);
-    } else {
-      setEmailsMatch(true);
-    }
-  }, [confirmEmail]);
 
   return (
     <div className="main-body">
@@ -79,7 +81,6 @@ function Main() {
           <button
             onClick={() => {
               setModalIsOpen(true);
-              resetForm();
             }}
           >
             <span>Request an invite</span>
@@ -132,7 +133,10 @@ function Main() {
               <div className="main-body__modal__buttons">
                 <button
                   className="main-body__modal__buttons--close"
-                  onClick={() => setModalIsOpen(false)}
+                  onClick={() => {
+                    setModalIsOpen(false);
+                    resetForm();
+                  }}
                 >
                   Close
                 </button>
@@ -144,6 +148,9 @@ function Main() {
                 </button>
               </div>
             </form>
+          </Modal>
+          <Modal isOpen={successModalIsOpen}>
+            <div></div>
           </Modal>
         </div>
       </div>
