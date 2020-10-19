@@ -1,0 +1,106 @@
+// Modal styling
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ReactModal__Content--after-open {
+  background-color: rgb(255, 255, 255) !important;
+  border-radius: 5px;
+  bottom: 0;
+  top: 30% !important;
+  width: 20%;
+  height: 40%;
+  left: 40% !important;
+  right: 0;
+  position: absolute;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.main-body__modal {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    margin: auto;
+    width: 80%;
+
+    input {
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    h2 {
+      padding-top: 25px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 45px;
+    width: 100%;
+
+    button {
+      font-weight: 600;
+      height: 50px;
+      width: 50%;
+    }
+
+    &--close {
+      background: #fff;
+    }
+
+    &--submit {
+      background: $lightGreen;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+// Viewport change styling
+
+@media only screen and (max-width: $breakpointMobile) {
+  .ReactModal__Content--after-open {
+    top: 20% !important;
+    width: 80%;
+    height: 60%;
+    left: 10% !important;
+  }
+}
+
+@media only screen and (max-width: $breakpointTablet) {
+  .ReactModal__Content--after-open {
+    top: 20% !important;
+    width: 80%;
+    height: 60%;
+    left: 10% !important;
+  }
+}

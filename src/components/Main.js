@@ -15,13 +15,17 @@ function Main() {
   const [responsePost, setResponsePost] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
-  // function decrementCount(){
-  //   setCount(prevCount => prevCount - 1)
-  // }
+  const [confirmEmail, setConfirmEmail] = useState("");
+  const [emailsMatch, setEmailsMatch] = useState(false);
+  const [confirmMessage, setConfirmMessage] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (email != confirmEmail) {
+      return false;
+    }
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -32,22 +36,28 @@ function Main() {
       "https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth",
       requestOptions
     ).then((response) => {
-      // if (response.status == 200) {
-      //   setSucceededPost(true);
-      //   console.log("shdshdjshdjksh");
-      // } else if (response.status == 400) {
-      //   setFailedPost({ failedPost: true });
-      //   console.log("done");
-      // }
-      // console.log(succeededPost);
-      // console.log(failedPost);
-      setResponsePost(response.status);
+      setResponsePost(() => setResponsePost(response.status));
       return response.json();
     });
+
     // .then((data) => setPostId(data.id));
   };
 
-  useEffect(() => {}, [responsePost]);
+  function matchingEmails() {
+    if (email == confirmEmail) {
+      return <span className="text-success">Emails match</span>;
+    } else {
+      return <span className="text-danger">Emails don't match</span>;
+    }
+  }
+
+  useEffect(() => {
+    if (email != confirmEmail) {
+      setEmailsMatch(false);
+    } else {
+      setEmailsMatch(true);
+    }
+  }, [confirmEmail]);
 
   return (
     <div className="main-body">
@@ -63,6 +73,11 @@ function Main() {
             <span>Request an invite</span>
           </button>
           <Modal
+            style={{
+              overlay: {
+                backgroundColor: "rgba(255, 255, 255, 0.75)",
+              },
+            }}
             isOpen={modalIsOpen}
             onRequestClose={() => setModalIsOpen(false)}
             aria={{
@@ -73,23 +88,35 @@ function Main() {
             className="main-body__modal"
           >
             <form onSubmit={onSubmit}>
-              {responsePost == 200 ? <h1>what</h1> : null}
+              <span className="text-danger">
+                {responsePost == 400 ? "Error 400" : ""}
+              </span>
               <div className="main-body__modal__content">
                 <h2>Request an invite</h2>
                 <input
                   type="text"
                   placeholder="Full name"
                   value={name}
+                  minLength="3"
                   onChange={(e) => setName(e.currentTarget.value)}
+                  required
                 />
                 <input
                   type="email"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.currentTarget.value)}
+                  required
                 />
-                <input type="email" placeholder="Confirm email" />
+                <input
+                  type="email"
+                  placeholder="Confirm email"
+                  value={confirmEmail}
+                  onChange={(e) => setConfirmEmail(e.currentTarget.value)}
+                  required
+                />
               </div>
+              <span>{matchingEmails()}</span>
               <div className="main-body__modal__buttons">
                 <button
                   className="main-body__modal__buttons--close"
