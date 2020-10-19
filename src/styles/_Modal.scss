@@ -10,7 +10,7 @@
   bottom: 0;
   top: 30% !important;
   width: 20%;
-  height: 40%;
+  max-height: 525px;
   left: 40% !important;
   right: 0;
   position: absolute;
@@ -50,7 +50,7 @@
       width: 100%;
     }
 
-    h2 {
+    legend {
       padding-top: 25px;
     }
   }
@@ -58,7 +58,6 @@
   &__buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 45px;
     width: 100%;
 
     button {
@@ -82,6 +81,20 @@
     height: 100%;
     justify-content: space-between;
     width: 100%;
+    fieldset {
+      background-color: #fff;
+      padding-bottom: 25px;
+    }
+  }
+}
+
+.main-body__modal__input {
+  margin: 10px 0px;
+  text-align: left;
+
+  :after {
+    content: " *";
+    color: red;
   }
 }
 

@@ -54,7 +54,7 @@ function Main() {
   }, [email, confirmEmail]);
 
   useEffect(() => {
-    if (responsePost == 200) {
+    if (responsePost === 200) {
       setModalIsOpen(() => setModalIsOpen(false));
       setSuccessModalIsOpen(() => setSuccessModalIsOpen(true));
     }
@@ -70,7 +70,11 @@ function Main() {
   return (
     <div className="main-body">
       <div className="main-body__section">
-        <img src={MainImage} className="main-body__image" alt="logo" />
+        <img
+          src={MainImage}
+          className="main-body__image"
+          alt="broccoli and co main image"
+        />
         <div className="main-body__headings">
           <h1>
             A better way
@@ -81,6 +85,7 @@ function Main() {
             onClick={() => {
               setModalIsOpen(true);
             }}
+            aria-label="Request invite"
           >
             <span>Request an invite</span>
           </button>
@@ -100,60 +105,72 @@ function Main() {
             className="main-body__modal"
           >
             <form onSubmit={onSubmit}>
-              <span className="text-danger mt-3">
-                {responsePost == 400 ? "Oops. Try another email" : ""}
-              </span>
-              <div className="main-body__modal__content">
-                <h2>Request an invite</h2>
-                <input
-                  type="text"
-                  placeholder="Full name"
-                  value={name}
-                  minLength="3"
-                  onChange={(e) => {
-                    setName(e.currentTarget.value);
-                  }}
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.currentTarget.value)}
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Confirm email"
-                  value={confirmEmail}
-                  onChange={(e) => setConfirmEmail(e.currentTarget.value)}
-                  required
-                />
-              </div>
-              <span
-                className={`${
-                  email === confirmEmail ? "text-success" : "text-danger"
-                } mt-3`}
-              >
-                {emailsMatchedMessage}
-              </span>
-              <div className="main-body__modal__buttons">
-                <button
-                  className="main-body__modal__buttons--close"
-                  onClick={() => {
-                    setModalIsOpen(false);
-                    resetForm();
-                  }}
-                >
-                  Close
-                </button>
-                <button
-                  type="submit"
-                  className="main-body__modal__buttons--submit"
-                >
-                  Submit
-                </button>
-              </div>
+              <fieldset>
+                <span className="text-danger mt-3">
+                  {responsePost === 400 ? "Oops. Try another email" : ""}
+                </span>
+                <div className="main-body__modal__content">
+                  <legend>Request an invite</legend>
+                  <div className="main-body__modal__input">
+                    <b>Name</b>
+                    <input
+                      type="text"
+                      placeholder="Enter full name"
+                      value={name}
+                      minLength="3"
+                      onChange={(e) => {
+                        setName(e.currentTarget.value);
+                      }}
+                      required
+                    />
+                  </div>
+                  <div className="main-body__modal__input">
+                    <b>Email</b>
+                    <input
+                      type="email"
+                      placeholder="Enter email"
+                      value={email}
+                      onChange={(e) => setEmail(e.currentTarget.value)}
+                      required
+                    />
+                  </div>
+                  <div className="main-body__modal__input">
+                    <b>Confirm email</b>
+                    <input
+                      type="email"
+                      placeholder="Confirm your email"
+                      value={confirmEmail}
+                      onChange={(e) => setConfirmEmail(e.currentTarget.value)}
+                      required
+                    />
+                  </div>
+                  <span
+                    className={`${
+                      email === confirmEmail ? "text-success" : "text-danger"
+                    } mt-3`}
+                  >
+                    {emailsMatchedMessage}
+                  </span>
+                  <div className="main-body__modal__buttons">
+                    <button
+                      className="main-body__modal__buttons--close"
+                      onClick={() => {
+                        setModalIsOpen(false);
+                        resetForm();
+                      }}
+                      aria-label="Close request invite modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      type="submit"
+                      className="main-body__modal__buttons--submit"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
             </form>
           </Modal>
           <Modal
@@ -174,6 +191,7 @@ function Main() {
                   setSuccessModalIsOpen(false);
                   resetForm();
                 }}
+                aria-label="Close successful invite modal"
               >
                 Close
               </button>
@@ -185,7 +203,7 @@ function Main() {
         <a href="/about">
           <div className="our-purpose__section">
             <div className="our-purpose__section--line-1"></div>
-            <img src={DeliveryTruck} alt="DeliveryTruck" />
+            <img src={DeliveryTruck} alt="What we do icon" />
             <h3>What we do</h3>
             <p>
               We deliver the freshest vegetables in all of Australia to your
@@ -197,7 +215,7 @@ function Main() {
         <a href="/about">
           <div className="our-purpose__section">
             <div className="our-purpose__section--line-2"></div>
-            <img src={Charity} alt="Charity" />
+            <img src={Charity} alt="Charity icon" />
             <h3>Our charities</h3>
             <p>
               We're always happy to deliver unwanted vegetables to the needy. We
@@ -208,7 +226,7 @@ function Main() {
         <a href="/about">
           <div className="our-purpose__section">
             <div className="our-purpose__section--line-3"></div>
-            <img src={Sustainability} alt="Sustainability" />
+            <img src={Sustainability} alt="Sustainability icon" />
             <h3>Sustainability</h3>
             <p>
               For every company we sign up, we plant one tree in the forrest of

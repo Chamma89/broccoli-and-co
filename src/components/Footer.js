@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import "../styles/_Footer.scss";
-import * as ReactBootstrap from "react-bootstrap";
 
 function Footer() {
   return (
