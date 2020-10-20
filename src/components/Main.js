@@ -40,6 +40,7 @@ function Main() {
   };
 
   useEffect(() => {
+    setResponsePost(300);
     if (email.length !== 0 && confirmEmail.length !== 0) {
       if (email.toLowerCase() === confirmEmail.toLowerCase()) {
         setEmailsMatchedMessage(() => setEmailsMatchedMessage("Emails match"));
@@ -147,7 +148,7 @@ function Main() {
                   <span
                     className={`${
                       email === confirmEmail ? "text-success" : "text-danger"
-                    } mt-3`}
+                    } m-2`}
                   >
                     {emailsMatchedMessage}
                   </span>
@@ -185,7 +186,7 @@ function Main() {
           >
             <div className="success-modal__content">
               <h2>All done!</h2>
-              <p>You will receieve the invite in the mail any second now.</p>
+              <p>You will receieve an invite in the mail any second now.</p>
               <button
                 onClick={() => {
                   setSuccessModalIsOpen(false);

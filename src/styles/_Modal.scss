@@ -8,10 +8,10 @@
   background-color: rgb(255, 255, 255) !important;
   border-radius: 5px;
   bottom: 0;
-  top: 30% !important;
-  width: 20%;
+  top: 25% !important;
+  width: 35%;
   max-height: 525px;
-  left: 40% !important;
+  left: 32% !important;
   right: 0;
   position: absolute;
 }
@@ -37,12 +37,12 @@
   text-align: center;
 
   &__content {
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
     margin: auto;
-    width: 80%;
 
     input {
       border-radius: 5px;
@@ -51,11 +51,15 @@
     }
 
     legend {
-      padding-top: 25px;
+      background-color: $darkGreen;
+      color: #fff;
+      font-weight: 600;
+      padding: 25px 0px;
     }
   }
 
   &__buttons {
+    border: 1px solid white;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -83,14 +87,16 @@
     width: 100%;
     fieldset {
       background-color: #fff;
-      padding-bottom: 25px;
+      // padding-bottom: 35px;
+      height: 100%;
     }
   }
 }
 
 .main-body__modal__input {
-  margin: 10px 0px;
+  margin: 10px auto;
   text-align: left;
+  width: 80%;
 
   :after {
     content: " *";
@@ -117,20 +123,11 @@
 
 // Viewport change styling
 
-@media only screen and (max-width: $breakpointMobile) {
-  .ReactModal__Content--after-open {
-    top: 20% !important;
-    width: 80%;
-    height: 60%;
-    left: 10% !important;
-  }
-}
-
 @media only screen and (max-width: $breakpointTablet) {
   .ReactModal__Content--after-open {
-    top: 20% !important;
+    top: 15% !important;
     width: 80%;
-    height: 60%;
+    height: 70%;
     left: 10% !important;
   }
 }
