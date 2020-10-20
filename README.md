@@ -3,6 +3,7 @@
 - [The project](#The-project)
 - [Technologies](#technologies)
 - [Setup](#setup)
+- [Testing scenarios](#testing-scenarios)
 - [What I learned](#What-I-learned)
 
 ## The project
@@ -41,6 +42,21 @@ $ cd broccoli-and-co
 ```
 $ npm start
 ```
+
+# Testing scenarios
+
+- Test Nav functionality
+- Click on request invite which prompts modal
+- Form should check for
+  - Name validation (min 3 characters)
+  - Email validation and warning if it doesn't
+  - Emails match and warning if they dont
+- The form should not submit if:
+  - Form is empty
+  - Name or email is invalid
+  - Emails don't match
+- Successful form submit should prompt second modal
+- Requesting another invite should have a clear form
 
 # What I learned
 
