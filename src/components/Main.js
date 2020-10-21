@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Modal from "react-modal";
-import "../styles/_Main.scss";
 import MainImage from "../images/main-veggies.jpg";
 import DeliveryTruck from "../images/delivery-icon.png";
 import Charity from "../images/charity-icon.png";
 import Sustainability from "../images/sustainability-icon.png";
+import "../styles/_Main.scss";
 
-Modal.setAppElement("#root");
+// Modal.setAppElement("#root"); // Causing tests not to run
 
 function Main() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -35,6 +36,7 @@ function Main() {
       requestOptions
     ).then((response) => {
       setResponsePost(() => setResponsePost(response.status));
+      console.log(response);
       return response.json();
     });
   };
@@ -107,9 +109,6 @@ function Main() {
           >
             <form onSubmit={onSubmit}>
               <fieldset>
-                <span className="text-danger mt-3">
-                  {responsePost === 400 ? "Oops. Try another email" : ""}
-                </span>
                 <div className="main-body__modal__content">
                   <legend>Request an invite</legend>
                   <div className="main-body__modal__input">
@@ -134,6 +133,9 @@ function Main() {
                       onChange={(e) => setEmail(e.currentTarget.value)}
                       required
                     />
+                    <span className="text-danger mt-3">
+                      {responsePost === 400 ? "Oops. Try another email" : ""}
+                    </span>
                   </div>
                   <div className="main-body__modal__input">
                     <b>Confirm email</b>
