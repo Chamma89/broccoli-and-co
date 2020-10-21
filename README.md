@@ -57,10 +57,12 @@ $ npm start
   - Emails don't match
 - Successful form submit should prompt second modal
 - Requesting another invite should have a clear form
+- All the above should be done in both Desktop and mobile viewport.
 
 # What I learned
 
-- This is the first time using React hooks and I appreciate how clean the code is and how much easier it is to work with.
+- It was great to brush up on React and this is the first time using React hooks and I appreciate how clean the code is and how much easier it is to work with.
 - Structure of SCSS by managing files and using mixins.
 - I did briefly learn about Jest's mocks and the type of tests but was unfortunately unable to demonstate it in the project due to configuration issues. This is something to improve on in the future because I'm willing to use testing regularly in a professional environment.
 - Accessibility tags and other important things to take into consideration when building a web page.
+- That I need do more testing in order to get better. ie unit tests
