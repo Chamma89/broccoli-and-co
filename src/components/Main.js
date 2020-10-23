@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import AOS from "aos";
 import Modal from "react-modal";
 import MainImage from "../images/main-veggies.jpg";
 import DeliveryTruck from "../images/delivery-icon.png";
@@ -69,6 +69,10 @@ function Main() {
     setConfirmEmail("");
     setResponsePost(300);
   }
+
+  AOS.init({
+    once: true,
+  });
 
   return (
     <div className="main-body">
@@ -203,7 +207,7 @@ function Main() {
         </div>
       </div>
       <div className="our-purpose container">
-        <a href="/about">
+        <a href="/about" data-aos="fade-up">
           <div className="our-purpose__section">
             <div className="our-purpose__section--line-1"></div>
             <img src={DeliveryTruck} alt="What we do icon" />
@@ -215,7 +219,7 @@ function Main() {
             </p>
           </div>
         </a>
-        <a href="/about">
+        <a href="/about" data-aos="fade-up">
           <div className="our-purpose__section">
             <div className="our-purpose__section--line-2"></div>
             <img src={Charity} alt="Charity icon" />
@@ -226,7 +230,7 @@ function Main() {
             </p>
           </div>
         </a>
-        <a href="/about">
+        <a href="/about" data-aos="fade-up">
           <div className="our-purpose__section">
             <div className="our-purpose__section--line-3"></div>
             <img src={Sustainability} alt="Sustainability icon" />
