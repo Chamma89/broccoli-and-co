@@ -192,7 +192,7 @@ function Main() {
           >
             <div className="success-modal__content">
               <h2>All done!</h2>
-              <p>You will receieve an invite in the mail any second now.</p>
+              <p>You will receive an invite in the mail any second now.</p>
               <button
                 onClick={() => {
                   setSuccessModalIsOpen(false);
